@@ -11,6 +11,20 @@ permissions:
   contents: read
 
 jobs:
+  check-affected:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Detect affected targets
+        uses: gagle/nx-check-changes@v1.0.0
+        id: nx-changes
+    
+    outputs:
+      changed-dirs: ${{ steps.nx-changes.outputs.changed-dirs }}
+      skip: ${{ steps.nx-changes.outputs.not-affected }}
+
   main:
     runs-on: ubuntu-latest
     steps:

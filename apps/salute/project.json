@@ -19,6 +19,26 @@
           "buildTarget": "salute:build:production"
         }
       }
+    },
+    "container": {
+      "executor": "@nx-tools/nx-container:build",
+      "dependsOn": [
+        "build"
+      ],
+      "options": {
+        "engine": "docker",
+        "latest": true,
+        "metadata": {
+          "images": [
+            "qsenseag/mihajlom"
+          ],
+          "load": true,
+          "tags": [
+            "type=raw,salute-latest",
+            "type=sha,prefix=salute-"
+          ]
+        }
+      }
     }
   }
 }
