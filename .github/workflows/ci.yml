@@ -11,14 +11,6 @@ permissions:
   contents: read
 
 jobs:
-  check-affected:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Detect affected targets
-        uses: 2coo/action-nx-affected@v2
-        id: checkForAffected
-    
   main:
     runs-on: ubuntu-latest
     steps:
@@ -26,19 +18,24 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Connect your workspace on nx.app and uncomment this to enable task distribution.
-      # The "--stop-agents-after" is optional, but allows idle agents to shut down once the "build" targets have been requested
-      # - run: npx nx-cloud start-ci-run --distribute-on="5 linux-medium-js" --stop-agents-after="build"
+      # # Connect your workspace on nx.app and uncomment this to enable task distribution.
+      # # The "--stop-agents-after" is optional, but allows idle agents to shut down once the "build" targets have been requested
+      # # - run: npx nx-cloud start-ci-run --distribute-on="5 linux-medium-js" --stop-agents-after="build"
 
-      # Cache node_modules
-      - uses: actions/setup-node@v3
+      # # Cache node_modules
+      # - uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 20
+      #     cache: 'npm'
+
+      # - run: npm ci
+      # - uses: nrwl/nx-set-shas@v4
+
+      # # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
+      # # - run: npx nx-cloud record -- echo Hello World
+      # - run: npx nx affected -t lint test build
+
+      - uses: mansagroup/nrwl-nx-action@v3
         with:
-          node-version: 20
-          cache: 'npm'
-
-      - run: npm ci
-      - uses: nrwl/nx-set-shas@v4
-
-      # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
-      # - run: npx nx-cloud record -- echo Hello World
-      - run: npx nx affected -t lint test build
+          targets: container
+          projects: salute
