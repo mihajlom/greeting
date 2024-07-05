@@ -15,8 +15,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      
       - name: Detect affected targets
         uses: 2coo/action-nx-affected@v1
         id: checkForAffected
