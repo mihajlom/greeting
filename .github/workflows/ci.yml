@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Detect affected targets
-        uses: 2coo/action-nx-affected@v1
+        uses: 2coo/action-nx-affected@v2
         id: checkForAffected
     
   main:
