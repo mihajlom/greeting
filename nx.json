@@ -1,10 +1,7 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "namedInputs": {
-    "default": [
-      "{projectRoot}/**/*",
-      "sharedGlobals"
-    ],
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [
       "default",
       "!{projectRoot}/.eslintrc.json",
@@ -37,9 +34,7 @@
       "options": {
         "targetName": "test"
       },
-      "exclude": [
-        "apps/salute-e2e/**/*"
-      ]
+      "exclude": ["apps/salute-e2e/**/*"]
     },
     {
       "plugin": "@nx/next/plugin",
@@ -51,5 +46,13 @@
       }
     }
   ],
-  "nxCloudAccessToken": "ODNiMGMxZjctZWMwYi00MzZiLTg0MWItYzk4ZmUyNzQ1YTQyfHJlYWQtd3JpdGU="
+  "nxCloudAccessToken": "ODNiMGMxZjctZWMwYi00MzZiLTg0MWItYzk4ZmUyNzQ1YTQyfHJlYWQtd3JpdGU=",
+  "generators": {
+    "@nx/next": {
+      "application": {
+        "style": "css",
+        "linter": "eslint"
+      }
+    }
+  }
 }
