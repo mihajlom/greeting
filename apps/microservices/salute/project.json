@@ -1,7 +1,7 @@
 {
   "name": "salute",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/salute/src",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/microservices/salute/src",
   "projectType": "application",
   "tags": [],
   "targets": {
@@ -22,21 +22,14 @@
     },
     "container": {
       "executor": "@nx-tools/nx-container:build",
-      "dependsOn": [
-        "build"
-      ],
+      "dependsOn": ["build"],
       "options": {
         "engine": "docker",
         "latest": true,
         "metadata": {
-          "images": [
-            "qsenseag/mihajlom"
-          ],
+          "images": ["qsenseag/mihajlom"],
           "load": true,
-          "tags": [
-            "type=raw,salute-latest",
-            "type=sha,prefix=salute-"
-          ]
+          "tags": ["type=raw,salute-latest", "type=sha,prefix=salute-"]
         }
       }
     }
